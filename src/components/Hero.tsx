@@ -1,8 +1,25 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Play, Lock, CheckCircle2 } from "lucide-react";
+import {
+  Play,
+  Lock,
+  CheckCircle2,
+  Star,
+  ChevronDown,
+  Sparkles,
+  Award,
+} from "lucide-react";
 
 export function Hero() {
+  return (
+    <>
+      <HeroIntro />
+      <HeroPreview />
+    </>
+  );
+}
+
+function HeroIntro() {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -11,16 +28,18 @@ export function Hero() {
 
   const textY = useTransform(scrollYProgress, [0, 1], [0, -200]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const previewY = useTransform(scrollYProgress, [0, 1], [0, -250]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden flex flex-col items-center mt-16 md:mt-20 px-4"
+      className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center mt-16 md:mt-20 px-4 pb-12"
     >
+      <BackgroundGlow />
+      <FloatingAccents />
+
       <motion.div
         style={{ y: textY, opacity: textOpacity }}
-        className="flex flex-col items-center text-center max-w-4xl mx-auto"
+        className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto"
       >
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -81,19 +100,32 @@ export function Hero() {
             Browse Courses
           </motion.button>
         </motion.div>
+
+        <SocialProof />
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-        style={{
-          y: previewY,
-          width: "100vw",
-          marginLeft: "calc(-50vw + 50%)",
-        }}
-        className="relative aspect-video mt-16 md:mt-20"
-      >
+      <ScrollCue />
+    </section>
+  );
+}
+
+function HeroPreview() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const previewY = useTransform(scrollYProgress, [0, 1], [80, -180]);
+  const previewScale = useTransform(scrollYProgress, [0, 0.4, 1], [0.94, 1, 1]);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative w-screen overflow-hidden"
+      style={{ marginLeft: "calc(-50vw + 50%)" }}
+    >
+      <div className="relative aspect-video">
         <video
           className="absolute inset-0 w-full h-full object-cover"
           autoPlay
@@ -110,16 +142,154 @@ export function Hero() {
 
         <div className="absolute inset-0 bg-background/40" />
 
-        <div
+        <motion.div
+          style={{ y: previewY, scale: previewScale, mixBlendMode: "luminosity" }}
           className="absolute inset-0 flex items-center justify-center"
-          style={{ mixBlendMode: "luminosity" }}
         >
           <CoursePlayerMockup />
-        </div>
+        </motion.div>
 
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background to-transparent z-30" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-background z-30" />
-      </motion.div>
+      </div>
     </section>
+  );
+}
+
+function BackgroundGlow() {
+  return (
+    <>
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(38_92%_50%/0.10),transparent_55%)]" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-background" />
+    </>
+  );
+}
+
+function FloatingAccents() {
+  return (
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+        className="hidden lg:flex absolute left-[6%] top-[28%] z-0"
+      >
+        <div className="liquid-glass rounded-2xl px-4 py-3 flex items-center gap-3 -rotate-[6deg]">
+          <div className="relative">
+            <span className="absolute inset-0 rounded-full bg-emerald-500/40 animate-ping" />
+            <span className="relative block w-2.5 h-2.5 rounded-full bg-emerald-500" />
+          </div>
+          <div className="text-left">
+            <div className="text-xs text-muted-foreground">Right now</div>
+            <div className="text-sm font-medium">
+              <span className="tabular-nums">2,847</span> learning live
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.7 }}
+        className="hidden lg:flex absolute right-[6%] top-[26%] z-0"
+      >
+        <div className="liquid-glass rounded-2xl px-4 py-3 flex items-center gap-3 rotate-[5deg]">
+          <div className="w-9 h-9 rounded-xl bg-accent/15 text-accent flex items-center justify-center">
+            <Award className="w-5 h-5" />
+          </div>
+          <div className="text-left">
+            <div className="text-xs text-muted-foreground">Earned today</div>
+            <div className="text-sm font-medium">
+              <span className="tabular-nums">312</span> certificates
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.8 }}
+        className="hidden lg:flex absolute left-[10%] bottom-[18%] z-0"
+      >
+        <div className="liquid-glass rounded-2xl px-4 py-3 flex items-center gap-3 rotate-[4deg]">
+          <Sparkles className="w-5 h-5 text-accent" />
+          <div className="text-sm font-medium">AI-guided learning paths</div>
+        </div>
+      </motion.div>
+    </>
+  );
+}
+
+function SocialProof() {
+  const avatars = [
+    "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=120&q=80",
+    "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&q=80",
+    "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=120&q=80",
+    "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&q=80",
+    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=80",
+  ];
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.5 }}
+      className="mt-10 flex flex-col sm:flex-row items-center gap-5 sm:gap-8"
+    >
+      <div className="flex items-center gap-3">
+        <div className="flex -space-x-2">
+          {avatars.map((src, i) => (
+            <img
+              key={i}
+              src={src}
+              alt=""
+              className="w-8 h-8 rounded-full border-2 border-background object-cover"
+            />
+          ))}
+        </div>
+        <div className="text-sm text-muted-foreground text-left">
+          Joined by{" "}
+          <span className="text-foreground font-medium">500K+ learners</span>
+        </div>
+      </div>
+
+      <div className="hidden sm:block w-px h-6 bg-border" />
+
+      <div className="flex items-center gap-2">
+        <div className="flex">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <Star key={i} className="w-4 h-4 fill-accent text-accent" />
+          ))}
+        </div>
+        <span className="text-sm">
+          <span className="font-medium">4.9</span>
+          <span className="text-muted-foreground"> · 28K reviews</span>
+        </span>
+      </div>
+    </motion.div>
+  );
+}
+
+function ScrollCue() {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, delay: 1 }}
+      className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground"
+    >
+      <span className="text-[11px] uppercase tracking-[0.18em]">
+        See it in action
+      </span>
+      <motion.div
+        animate={{ y: [0, 6, 0] }}
+        transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+        className="w-7 h-7 rounded-full border border-border flex items-center justify-center"
+      >
+        <ChevronDown className="w-4 h-4" />
+      </motion.div>
+    </motion.div>
   );
 }
 
