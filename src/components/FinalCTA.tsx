@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 
 export function FinalCTA() {
   return (
-    <section className="relative overflow-hidden py-32 px-8 md:px-28 text-center">
+    <section className="relative overflow-hidden py-24 sm:py-32 px-6 sm:px-8 md:px-28 text-center">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(38_92%_50%/0.15),transparent_60%)] pointer-events-none" />
 
       <div className="relative">
-        <h2 className="text-5xl md:text-6xl font-medium tracking-[-1.5px] mb-4">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-[-1.5px] mb-4">
           Start learning what's{" "}
           <span className="font-serif italic font-normal">next</span>.
         </h2>

@@ -67,9 +67,9 @@ export function Pricing() {
   const [annual, setAnnual] = useState(true);
 
   return (
-    <section className="py-24 px-8 md:px-28 bg-muted/30">
+    <section className="py-20 sm:py-24 px-6 sm:px-8 md:px-28 bg-muted/30">
       <div className="text-center max-w-2xl mx-auto mb-12">
-        <h2 className="text-4xl md:text-5xl font-medium tracking-[-1px] mb-4">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-[-1px] mb-4">
           Simple pricing.{" "}
           <span className="font-serif italic font-normal">Serious</span>{" "}
           outcomes.
@@ -113,7 +113,7 @@ export function Pricing() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className={`relative bg-card rounded-2xl p-8 ${
+            className={`relative bg-card rounded-2xl p-6 sm:p-8 ${
               t.highlight ? "border-2 border-accent" : "border border-border"
             }`}
           >

@@ -15,7 +15,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/50">
-      <div className="px-8 md:px-28 py-4 flex items-center justify-between">
+      <div className="px-6 sm:px-8 md:px-28 py-4 flex items-center justify-between">
         <div className="flex items-center gap-12 md:gap-20">
           <a href="#" className="flex items-center gap-2">
             <Logo />
@@ -62,7 +62,7 @@ export function Navbar() {
             transition={{ duration: 0.25 }}
             className="md:hidden overflow-hidden border-t border-border/50 bg-background/95 backdrop-blur-md"
           >
-            <div className="px-8 py-6 flex flex-col gap-4">
+            <div className="px-6 sm:px-8 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.label}

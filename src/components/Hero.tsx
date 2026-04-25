@@ -32,7 +32,7 @@ function HeroIntro() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center mt-16 md:mt-20 px-4 pb-12"
+      className="relative min-h-[100svh] overflow-hidden flex flex-col items-center justify-center mt-16 md:mt-20 px-6 sm:px-4 pb-16 md:pb-12"
     >
       <BackgroundGlow />
       <FloatingAccents />
@@ -59,7 +59,7 @@ function HeroIntro() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-5xl md:text-7xl tracking-[-2px] font-medium leading-tight md:leading-[1.15] mb-3"
+          className="text-[2.5rem] sm:text-5xl md:text-7xl tracking-[-1.5px] sm:tracking-[-2px] font-medium leading-[1.1] md:leading-[1.15] mb-3"
         >
           Master New Skills.
           <br />
@@ -125,7 +125,7 @@ function HeroPreview() {
       className="relative w-screen overflow-hidden"
       style={{ marginLeft: "calc(-50vw + 50%)" }}
     >
-      <div className="relative aspect-video">
+      <div className="relative aspect-[4/5] sm:aspect-[4/3] md:aspect-video">
         <video
           className="absolute inset-0 w-full h-full object-cover"
           autoPlay
@@ -295,14 +295,14 @@ function ScrollCue() {
 
 function CoursePlayerMockup() {
   return (
-    <div className="max-w-5xl w-[90%] rounded-2xl bg-card/95 border border-border shadow-2xl overflow-hidden">
-      <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-muted/40">
-        <div className="flex gap-1.5">
-          <span className="w-3 h-3 rounded-full bg-red-500/80" />
-          <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
-          <span className="w-3 h-3 rounded-full bg-green-500/80" />
+    <div className="max-w-5xl w-[92%] sm:w-[90%] rounded-xl sm:rounded-2xl bg-card/95 border border-border shadow-2xl overflow-hidden">
+      <div className="flex items-center gap-2 px-3 sm:px-4 py-2.5 sm:py-3 border-b border-border bg-muted/40">
+        <div className="flex gap-1 sm:gap-1.5">
+          <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500/80" />
+          <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500/80" />
+          <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500/80" />
         </div>
-        <div className="flex-1 mx-4 h-7 rounded-md bg-background/80 border border-border/50 flex items-center justify-center text-xs text-muted-foreground">
+        <div className="flex-1 mx-2 sm:mx-4 h-6 sm:h-7 rounded-md bg-background/80 border border-border/50 flex items-center justify-center text-[10px] sm:text-xs text-muted-foreground truncate px-2">
           primelearning.app/courses/react-bootcamp
         </div>
       </div>

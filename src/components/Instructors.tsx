@@ -41,8 +41,8 @@ const instructors = [
 
 export function Instructors() {
   return (
-    <section className="py-24 px-8 md:px-28">
-      <h2 className="text-4xl md:text-5xl font-medium tracking-[-1px] mb-4">
+    <section className="py-20 sm:py-24 px-6 sm:px-8 md:px-28">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-[-1px] mb-4">
         Learn from the{" "}
         <span className="font-serif italic font-normal">best</span>.
       </h2>
@@ -59,20 +59,20 @@ export function Instructors() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="text-center bg-card border border-border rounded-2xl p-6 card-hover"
+            className="text-center bg-card border border-border rounded-2xl p-5 sm:p-6 card-hover"
           >
             <img
               src={p.avatar}
               alt={p.name}
               loading="lazy"
-              className="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-border object-cover"
+              className="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto mb-4 border-2 border-border object-cover"
             />
             <h3 className="text-lg font-semibold">{p.name}</h3>
             <p className="text-sm text-muted-foreground mb-3">{p.role}</p>
-            <div className="flex justify-center gap-4 text-xs text-muted-foreground">
-              <span>⭐ {p.rating}</span>
-              <span>{p.students} students</span>
-              <span>{p.courses} courses</span>
+            <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+              <span className="whitespace-nowrap">⭐ {p.rating}</span>
+              <span className="whitespace-nowrap">{p.students} students</span>
+              <span className="whitespace-nowrap">{p.courses} courses</span>
             </div>
           </motion.article>
         ))}

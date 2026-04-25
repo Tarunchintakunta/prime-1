@@ -16,11 +16,11 @@ export function Testimonial() {
   return (
     <section
       ref={containerRef}
-      className="min-h-screen py-24 md:py-32 px-8 md:px-28 max-w-3xl mx-auto flex flex-col items-start gap-10"
+      className="min-h-screen py-20 sm:py-24 md:py-32 px-6 sm:px-8 md:px-28 max-w-3xl mx-auto flex flex-col items-start gap-8 sm:gap-10"
     >
       <QuoteMark />
 
-      <p className="text-4xl md:text-5xl font-medium leading-[1.2] flex flex-wrap">
+      <p className="text-2xl sm:text-3xl md:text-5xl font-medium leading-[1.25] md:leading-[1.2] flex flex-wrap">
         {words.map((word, i) => (
           <Word
             key={i}

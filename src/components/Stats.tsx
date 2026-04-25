@@ -74,10 +74,10 @@ export function Stats() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="py-16 px-8 md:px-28 border-t border-border/40">
+    <section className="py-16 px-6 sm:px-8 md:px-28 border-t border-border/40">
       <div
         ref={ref}
-        className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 mb-20"
+        className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 mb-16 sm:mb-20"
       >
         {stats.map((s, i) => (
           <motion.div
@@ -86,7 +86,7 @@ export function Stats() {
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
           >
-            <div className="text-5xl font-medium tracking-tight tabular-nums">
+            <div className="text-4xl sm:text-5xl font-medium tracking-tight tabular-nums">
               <CountUp
                 to={s.value}
                 format={s.format}

@@ -43,8 +43,8 @@ const features = [
 
 export function Features() {
   return (
-    <section className="py-24 px-8 md:px-28">
-      <h2 className="text-4xl md:text-5xl font-medium tracking-[-1px] mb-4">
+    <section className="py-20 sm:py-24 px-6 sm:px-8 md:px-28">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-[-1px] mb-4">
         Built for{" "}
         <span className="font-serif italic font-normal">real</span> learning.
       </h2>

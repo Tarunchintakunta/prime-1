@@ -89,11 +89,11 @@ const courses: Course[] = [
 
 export function FeaturedCourses() {
   return (
-    <section className="py-24 px-8 md:px-28">
+    <section className="py-20 sm:py-24 px-6 sm:px-8 md:px-28">
       <div className="text-sm font-medium text-accent uppercase tracking-wider mb-3">
         Most Popular
       </div>
-      <h2 className="text-4xl md:text-5xl font-medium tracking-[-1px] mb-4">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-[-1px] mb-4">
         Courses learners{" "}
         <span className="font-serif italic font-normal">love</span>.
       </h2>

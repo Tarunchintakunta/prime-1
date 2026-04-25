@@ -34,8 +34,8 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section className="py-24 px-8 md:px-28 max-w-3xl mx-auto">
-      <h2 className="text-4xl md:text-5xl font-medium tracking-[-1px] mb-12 text-center">
+    <section className="py-20 sm:py-24 px-6 sm:px-8 md:px-28 max-w-3xl mx-auto">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-[-1px] mb-10 sm:mb-12 text-center">
         Questions?{" "}
         <span className="font-serif italic font-normal">Answered</span>.
       </h2>
